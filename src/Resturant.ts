@@ -1,7 +1,10 @@
-import {Staff} from'./Human/staff/staff';
+import { HumanManager } from './Human/humanManager';
+import { RoomManagement } from './Human/Table/RoomManagement';
+import {Staff} from'./Human/Staff/staff';
 import {Table} from'./Human/Table/table';
 import {MenuManager} from './menu/MenuManager';
 export class Resturant{
+   
     public menu: MenuManager = new MenuManager();
     private staff :Staff[]=[]
     private table :Table[]=[]
@@ -27,4 +30,7 @@ export class Resturant{
     getTable():Table[]{
         return this.table;
     }
+
+    public rooms: RoomManagement = new RoomManagement();
+    public hr: HumanManager = new HumanManager();
 }

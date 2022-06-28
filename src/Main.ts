@@ -1,34 +1,15 @@
-import {Menu} from "./menu/Menu";
 import {Resturant} from './Resturant';
-import {Cashier} from './Human/Staff/Cashier';
-import {Chef} from './Human/Staff/Chef';
-import {Receiption} from './Human/Staff/Receiption';
-import {Staff,StaffCategories} from './Human/staff/Staff';
-import {Waiter} from './Human/Staff/Waiter';
+import {Cashier} from './Human/staff/Cashier';
+import {Chef} from './Human/staff/Chef';
+import {Receiption} from './Human/staff/Receiption';
+import {Staff,StaffCategories} from './Human/Staff/staff';
+import {Waiter} from './Human/staff/Waiter';
 import { Gender, Person } from './Human/Person';
-import {TableSeat, TableType} from './Human/Table/TableSeat';
-import { TableStatus } from './Human/Table/table';
-import {Food} from'./menu/food/Food';
-import {Backery} from'./menu/backery/Backery';
-import {Drink} from'./menu/drink/Drink';
-import {MealType} from './menu/mealType'
-// _______________________ add food____________________
-let rice = new Food('Rice',12,MealType.FOOD);
-let berger = new Food('humberger',30,MealType.FOOD);
-// _______________________ add Backery
-let chessCake = new Backery('Cheese Cake',20,MealType.BACKERY);
-let braek = new Backery('Break',12,MealType.BACKERY);
-// _______________________ add Drink
-let appleJuice = new Drink('Apple Juice',10,MealType.DRINK);
-let orangeJuice = new Drink('Orange Juice',10,MealType.DRINK);
-//________________________ add Meal in menu_______________________
-let menu = new Menu();
-menu.addFood(rice);
-menu.addFood(berger);
-menu.addDrink(appleJuice);
-menu.addDrink(orangeJuice);
-menu.addBackery(chessCake);
-menu.addBackery(braek);
+import {Table, TableStatus} from './Human/Table/table';
+import { TableSeat,TableType } from './Human/Table/TableSeat';
+import {HumanManager} from './Human/humanManager';
+import {Room} from './Human/Table/Room';
+import {RoomManagement} from './Human/Table/RoomManagement';
 
 //______________Resturant______________________________
 let chanry = new Resturant('Chanry resturant', 'Kampong Thom');
@@ -53,21 +34,31 @@ let keo =  new Receiption(StaffCategories.RECEIPTION,'Koe', 23, Gender.FEMALE);
 keo.setSalary(250);
 
 //_____________Table__________________________________
-let firstTable = new TableSeat(1, TableType.FAMILY, 2, TableStatus.FREE, 5);
+let firstTable = new TableSeat(1, TableType.FAMILY, 1, TableStatus.FREE, 5);
+let secondTable = new TableSeat(2, TableType.FAMILY, 2, TableStatus.FREE, 4);
+let thirdTable = new TableSeat(3, TableType.FAMILY,3, TableStatus.FREE, 8);
+let fourthTable = new TableSeat(4, TableType.FAMILY, 4, TableStatus.FREE, 3);
+let fifthTable = new TableSeat(5, TableType.FAMILY, 5, TableStatus.FREE, 2);
 
 
 //_____________Add staff______________________________
-chanry.addStaff(theavy);
-chanry.addStaff(mey);
-chanry.addStaff(tim);
-chanry.addStaff(mau);
-chanry.addStaff(keo);
-chanry.menu;
+chanry.hr.addStaff(theavy);
+chanry.hr.addStaff(mey);
+chanry.hr.addStaff(tim);
+chanry.hr.addStaff(mau);
+chanry.hr.addStaff(keo);
+
 
 //____________Add table_________________________________
-chanry.addTable(firstTable);
+let rooms = new Room(1)
+rooms.addTable(firstTable)
+rooms.addTable(secondTable)
+rooms.addTable(thirdTable)
+rooms.addTable(fourthTable)
+rooms.addTable(fifthTable)
 
+chanry.rooms.addRooms(rooms);
 //_____________Main___________________________________
-console.log(chanry.getStaff());
-console.log(chanry.getTable());
+// console.log(chanry.hr);
+console.log(chanry.rooms.getRooms());
 
