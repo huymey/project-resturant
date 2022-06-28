@@ -10,6 +10,9 @@ export class Menu {
     addFood(newFood : Food){
         this.foods.push(newFood);
     }
+    getFood():Food[]{
+        return this.foods;
+    }
     addBackery(newBackery : Backery){
         this.backerys.push(newBackery);
     }
