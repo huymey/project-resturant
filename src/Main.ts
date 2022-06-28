@@ -1,6 +1,4 @@
 import {Menu} from "./menu/Menu";
-import {MenuItems} from "./menu/MenuItems";
-import {FoodandDrinks} from "./menu/items";
 import {Resturant} from './Resturant';
 import {Cashier} from './Human/Staff/Cashier';
 import {Chef} from './Human/Staff/Chef';
@@ -10,31 +8,27 @@ import {Waiter} from './Human/Staff/Waiter';
 import { Gender, Person } from './Human/Person';
 import {TableSeat, TableType} from './Human/Table/TableSeat';
 import { TableStatus } from './Human/Table/table';
-// __________________________menu for food and drink___________________
-let firstMenu = new Menu (1);
-let secondMenu = new Menu(2);
-// __________________________food and drink___________________
-let stack = new MenuItems(1,FoodandDrinks.STACK,'Boil moderately',15);
-let salad = new MenuItems(2,FoodandDrinks.SALAD,'vagetable age and Sauce',10);
-let rice = new MenuItems(3,FoodandDrinks.RICE,'Hot rice',2);
-
-let abc = new MenuItems(4,FoodandDrinks.BEER,'ABC Cold',15);
-let mile = new MenuItems(5,FoodandDrinks.MILE,'Angkoe Mile',1);
-let orangeJuice = new MenuItems(6,FoodandDrinks.ORRANGEJUICE,'fresh orange with ice',2);
-// __________________________add drink and food to menu1___________________
-firstMenu.addMenu(stack);
-firstMenu.addMenu(salad);
-firstMenu.addMenu(rice);
-firstMenu.addMenu(abc);
-firstMenu.addMenu(mile);
-firstMenu.addMenu(orangeJuice);
-// ____________________________add drink and food to menu2_________________
-secondMenu.addMenu(stack);
-secondMenu.addMenu(salad);
-secondMenu.addMenu(rice);
-secondMenu.addMenu(abc);
-secondMenu.addMenu(mile);
-secondMenu.addMenu(orangeJuice);
+import {Food} from'./menu/food/Food';
+import {Backery} from'./menu/backery/Backery';
+import {Drink} from'./menu/drink/Drink';
+import {MealType} from './menu/mealType'
+// _______________________ add food____________________
+let rice = new Food('Rice',12,MealType.FOOD);
+let berger = new Food('humberger',30,MealType.FOOD);
+// _______________________ add Backery
+let chessCake = new Backery('Cheese Cake',20,MealType.BACKERY);
+let braek = new Backery('Break',12,MealType.BACKERY);
+// _______________________ add Drink
+let appleJuice = new Drink('Apple Juice',10,MealType.DRINK);
+let orangeJuice = new Drink('Orange Juice',10,MealType.DRINK);
+//________________________ add Meal in menu_______________________
+let menu = new Menu();
+menu.addFood(rice);
+menu.addFood(berger);
+menu.addDrink(appleJuice);
+menu.addDrink(orangeJuice);
+menu.addBackery(chessCake);
+menu.addBackery(braek);
 
 //______________Resturant______________________________
 let chanry = new Resturant('Chanry resturant', 'Kampong Thom');
@@ -68,14 +62,11 @@ chanry.addStaff(mey);
 chanry.addStaff(tim);
 chanry.addStaff(mau);
 chanry.addStaff(keo);
-
+chanry.menu;
 
 //____________Add table_________________________________
 chanry.addTable(firstTable);
 
-// ____________________________consol log__________________________________
-console.log(firstMenu);
-console.log(secondMenu);
 //_____________Main___________________________________
 console.log(chanry.getStaff());
 console.log(chanry.getTable());

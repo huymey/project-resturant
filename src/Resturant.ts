@@ -1,7 +1,8 @@
 import {Staff} from'./Human/staff/staff';
 import {Table} from'./Human/Table/table';
-
+import {MenuManager} from './menu/MenuManager';
 export class Resturant{
+    public menu: MenuManager = new MenuManager();
     private staff :Staff[]=[]
     private table :Table[]=[]
 
