@@ -29,7 +29,6 @@ menu.addDrink(appleJuice);
 menu.addDrink(orangeJuice);
 menu.addBackery(chessCake);
 menu.addBackery(braek);
-
 //______________Resturant______________________________
 let chanry = new Resturant('Chanry resturant', 'Kampong Thom');
 
@@ -70,4 +69,4 @@ chanry.addTable(firstTable);
 //_____________Main___________________________________
 console.log(chanry.getStaff());
 console.log(chanry.getTable());
-
+console.log(chanry.menu.listOfMenu);

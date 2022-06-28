@@ -13,6 +13,10 @@ export class Menu {
     addBackery(newBackery : Backery){
         this.backerys.push(newBackery);
     }
+
+    getBackery():Backery[]{
+        return this.backerys;
+    }
     addDrink(newDrink : Drink){
         this.drinks.push(newDrink);
     }
