@@ -4,7 +4,8 @@ import { MealType } from "./MealType";
 
 export class Menu {
     private meals : Meal[] = []; 
-    constructor( mealType : MealType, private price:number){}
+    constructor( mealType : MealType, private price : number){}
+
     addMeal(newMeal:Meal){
         this.meals.push(newMeal);
     }
@@ -13,3 +14,4 @@ export class Menu {
         return this.price;
     }
 }
+

@@ -6,22 +6,25 @@ export enum OrderStatus {
     CANCELLED = 'Cancelled',
     COMPLETED = 'Completed',
     NONE = 'None',
+
 }
 
 export class Order{
     public menus: Menu[] = [];
     constructor(
         private id: number,
-        private table: Table,
+        public table: Table,
     ){}
 
-    menuSelected(menu:Menu){
+   setMenu(menu:Menu){
         this.menus.push(menu);
     }
     
-    getTableId():number {
-        return this.getTableId();
-    }
+    // getTableId():number {
+    //     return this.getTableId();
+    // }
 
+    getMenu():Menu[]{return this.menus}
+   
     
 }

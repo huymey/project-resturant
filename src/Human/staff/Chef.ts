@@ -1,6 +1,6 @@
 import { Gender, Person } from "../Person";
 import { Staff, StaffCategories } from "./staff";
-import {Food} from '../../menu/food/Food';
+
 
 export class Chef extends Staff {
     

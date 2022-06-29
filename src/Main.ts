@@ -7,17 +7,12 @@ import {Waiter} from './Human/staff/Waiter';
 import { Gender, Person } from './Human/Person';
 import {Table} from './Human/Table/table';
 import { TableStatus } from './Human/Table/TableStatus';
-import {Food} from'./menu/food/Food';
-import {Backery} from'./menu/backery/Backery';
-import {Drink} from'./menu/drink/Drink';
 import {MealType} from './menu/mealType'
 import {Room} from './Human/Table/Room';
 import {Customer} from './Human/Customer/customer'
 import { Menu } from './menu/Menu';
-import { DateTime } from './calendar/DateTime';
-import { CookerAppointment } from './calendar/CookerAppointment';
-import { EventCategory } from './calendar/Event';
-import { Order } from './Human/order/Order';
+import { Order, OrderStatus } from './Human/order/Order';
+import { Meal } from './menu/Meal';
 
 
 
@@ -84,39 +79,43 @@ rooms.addTable(thirdTable)
 rooms.addTable(fourthTable)
 rooms.addTable(fifthTable)
 
-// _______________________ add food____________________
-let rice = new Food('Rice',12,MealType.FOOD);
-let berger = new Food('humberger',30,MealType.FOOD);
-// _______________________ add Backery
-let chessCake = new Backery('Cheese Cake',20,MealType.BACKERY);
-let braek = new Backery('Break',12,MealType.BACKERY);
-// _______________________ add Drink
-let appleJuice = new Drink('Apple Juice',10,MealType.DRINK);
-let orangeJuice = new Drink('Orange Juice',10,MealType.DRINK);
-//________________________ add Meal in menu_______________________
-let order1 = new Order(1, firstTable)
-let menu1 = new Menu(MealType.BACKERY, 2000);
-let menu2 = new Menu(MealType.DRINK, 1000);
-let menu3 = new Menu(MealType.FOOD, 5000);
-menu1.addMeal(rice);
-menu2.addMeal(berger);
-menu3.addMeal(appleJuice);
-chanry.kitchen.addChefToKitchen(tim);
-chanry.kitchen.addOrders(order1);
 chanry.rooms.addRooms(rooms);
+//___________________menu___________________________
+let rice = new Meal('Rice');
+let berger = new Meal('humberger');
 
-//____________________________Calenda__________________________
-let dateCooking1 = new DateTime(29, 6, 2022, 7)
-let dateCooking2 = new DateTime(30, 6, 2022, 6)
+let chessCake = new Meal("Cake");
+let braek = new Meal( 'Break');
 
-let cookingappointment = new CookerAppointment(EventCategory.COOKER_APPOINTEMENT, dateCooking1, dateCooking2)
-chanry.Calendars.addEvent(cookingappointment);
-console.log("Time to cooking : ", chanry.Calendars);
+let appleJuice = new Meal(  'Apple Juice');
+let orangeJuice = new Meal('Orange Juice');
 
-//_____________Main___________________________________
-// console.log(chanry.hr);
-// console.log(chanry.rooms.getRooms());
-console.log(chanry.menu.getMenu());
-// console.log(chanry.orders.listOfPaymentFromEachTable());
-// console.log(chanry.orders.getPaymentFromATable(1));
+let menu1 = new Menu(MealType.BACKERY, 2000);
+menu1.addMeal(rice);
+menu1.addMeal(berger);
 
+let menu2 = new Menu(MealType.DRINK, 1000);
+menu2.addMeal(chessCake);
+menu2.addMeal(braek);
+
+let menu3 = new Menu(MealType.FOOD, 3000);
+menu3.addMeal(appleJuice);
+menu3.addMeal(orangeJuice);
+
+//__________________________Orders and chose the menu___________________________
+
+let order1 = new Order(1, firstTable)
+let order2 = new Order(2, secondTable)
+let order3 = new Order(3, thirdTable);
+order1.setMenu(menu1);
+order2.setMenu(menu2);
+order3.setMenu(menu3);
+order3.setMenu(menu2);
+// console.log(order3);
+
+
+chanry.orders.addOrders(order1)
+chanry.orders.addOrders(order2)
+chanry.orders.addOrders(order3)
+
+console.log("Payment In each tableId: ", chanry.orders.listOfPaymentFromEachTable());

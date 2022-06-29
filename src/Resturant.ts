@@ -4,9 +4,8 @@ import {Staff} from'./Human/Staff/staff';
 import {Table} from'./Human/Table/table';
 import {MenuManager} from './menu/MenuManager';
 import { Menu } from './menu/Menu';
-import { CalendarManager } from './calendar/CalendarManager';
 import { Kitchen } from './Human/Table/Kitchen';
-import { OrderManagement } from './Human/Order/OrderManagement';
+import { OrdersManager } from './Human/order/OrderManager';
 export class Resturant{
    
 
@@ -36,16 +35,10 @@ export class Resturant{
         return this.table;
     }
 
-    addMenu(menu: Menu) {
-        this.menus= this.menus.concat(menu);
-    }
-    getMenu():Menu[]{
-        return this.menus
-    }
+    
     public rooms: RoomManagement = new RoomManagement();
     public hr: HumanManager = new HumanManager();
     public menu: MenuManager = new MenuManager();
     public kitchen: Kitchen = new Kitchen();
-    public orders: OrderManagement = new OrderManagement();
-    public Calendars:CalendarManager = new CalendarManager();
+    public orders: OrdersManager = new OrdersManager();
 }

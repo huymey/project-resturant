@@ -1,9 +1,9 @@
 import {Menu} from "./Menu";
 export class MenuManager {
-    private listOfMenu: Menu;
-
+   
+    private listOfMenu: Menu[]=[];
     setManu(manu: Menu){
-        return this.listOfMenu = manu;
+        this.listOfMenu.push(manu)
     }
 
     getMenu(){
