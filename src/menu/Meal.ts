@@ -1,4 +1,4 @@
-export abstract class Meal {
+
+export class Meal {
 constructor(protected name : string, protected price: number){}
-abstract getPrice():number;
 }
