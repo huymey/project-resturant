@@ -1,4 +1,5 @@
-import { Table , TableStatus} from "../Table/table";
+import { Menu } from "../../menu/Menu";
+import { Table} from "../Table/table";
 export enum OrderStatus {
     RECIEVED = 'Recieved',
     PREPARE = 'Preparing',
@@ -7,17 +8,20 @@ export enum OrderStatus {
     NONE = 'None',
 }
 
-export class Order extends Table {
+export class Order{
+    public menus: Menu[] = [];
     constructor(
-        private orderId: number,
-        private orderStatus: OrderStatus,
-        tableId: number, 
-        status:TableStatus, 
-        maxCapacity: number,
-    ){
-        super(tableId, status, maxCapacity);
+        private id: number,
+        private table: Table,
+    ){}
+
+    menuSelected(menu:Menu){
+        this.menus.push(menu);
     }
     
+    getTableId():number {
+        return this.getTableId();
+    }
 
     
 }

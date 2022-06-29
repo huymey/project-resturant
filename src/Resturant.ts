@@ -4,6 +4,9 @@ import {Staff} from'./Human/Staff/staff';
 import {Table} from'./Human/Table/table';
 import {MenuManager} from './menu/MenuManager';
 import { Menu } from './menu/Menu';
+import { CalendarManager } from './calendar/CalendarManager';
+import { Kitchen } from './Human/Table/Kitchen';
+import { OrderManagement } from './Human/Order/OrderManagement';
 export class Resturant{
    
 
@@ -42,4 +45,7 @@ export class Resturant{
     public rooms: RoomManagement = new RoomManagement();
     public hr: HumanManager = new HumanManager();
     public menu: MenuManager = new MenuManager();
+    public kitchen: Kitchen = new Kitchen();
+    public orders: OrderManagement = new OrderManagement();
+    public Calendars:CalendarManager = new CalendarManager();
 }

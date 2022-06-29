@@ -4,9 +4,9 @@ import { Person, Gender } from "../Person";
 export class Customer extends Person{
     publicLastVisited: any;
 
-    constructor( name:string, age:number, gender:Gender, public lastVisited:Date){
+    constructor( name:string, age:number, gender:Gender){
         super(name, age, gender);
-        this.lastVisited = lastVisited;
+       
     }
 
     isEquals(other:Customer):Boolean{

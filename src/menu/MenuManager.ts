@@ -6,7 +6,7 @@ export class MenuManager {
         return this.listOfMenu = manu;
     }
 
-    getManu(){
+    getMenu(){
         return this.listOfMenu;
     }
 

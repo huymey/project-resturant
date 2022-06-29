@@ -1,26 +1,15 @@
-import {Backery} from "./backery/Backery";
-import {Drink} from "./drink/Drink";
-import {Food} from "./food/Food";
+
+import { Meal } from "./Meal";
+import { MealType } from "./MealType";
 
 export class Menu {
-    private foods : Food[]=[];
-    private backerys :Backery[]=[];
-    private drinks : Drink[]=[];
-    
-    addFood(newFood : Food){
-        this.foods.push(newFood);
-    }
-    getFood():Food[]{
-        return this.foods;
-    }
-    addBackery(newBackery : Backery){
-        this.backerys.push(newBackery);
+    private meals : Meal[] = []; 
+    constructor( mealType : MealType, private price:number){}
+    addMeal(newMeal:Meal){
+        this.meals.push(newMeal);
     }
 
-    getBackery():Backery[]{
-        return this.backerys;
-    }
-    addDrink(newDrink : Drink){
-        this.drinks.push(newDrink);
+    getPrice():number{
+        return this.price;
     }
 }

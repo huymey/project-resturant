@@ -1,11 +1,13 @@
-import {Table, TableStatus} from './table';
+import {Table} from './table';
 import { Customer } from '../Customer/customer';
+import { TableStatus } from './TableStatus';
 
 export class Room{
  
     private tables:Table[] = [];
     private customer?: Customer = undefined;
-    private status = TableStatus.FREE;
+    private status = TableStatus;
+    Tablestatus: TableStatus;
     constructor(private id:number){}
 
     getNumberOfTable() {
@@ -34,9 +36,11 @@ export class Room{
     }
 
     setStatus(newStatus: TableStatus) {
-        this.status = newStatus;
+        this.Tablestatus = newStatus;
     }
     removeCustomer(customer: Customer) {
         this.customer = undefined;
     }
+
+    
 }

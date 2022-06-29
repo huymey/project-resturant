@@ -13,5 +13,7 @@ export class Receiption extends Staff {
         this.salary = salary;
     }
 
-    getSalary():number{return this.salary}
+    getSalary():number{
+        return this.salary
+    }
 }

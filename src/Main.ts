@@ -5,16 +5,19 @@ import {Receiption} from './Human/staff/Receiption';
 import {Staff,StaffCategories} from './Human/Staff/staff';
 import {Waiter} from './Human/staff/Waiter';
 import { Gender, Person } from './Human/Person';
-import {TableSeat,TableType} from './Human/Table/TableSeat';
-import { TableStatus } from './Human/Table/table';
+import {Table} from './Human/Table/table';
+import { TableStatus } from './Human/Table/TableStatus';
 import {Food} from'./menu/food/Food';
 import {Backery} from'./menu/backery/Backery';
 import {Drink} from'./menu/drink/Drink';
 import {MealType} from './menu/mealType'
-import {HumanManager} from './Human/humanManager';
 import {Room} from './Human/Table/Room';
-import {RoomManagement} from './Human/Table/RoomManagement';
+import {Customer} from './Human/Customer/customer'
 import { Menu } from './menu/Menu';
+import { DateTime } from './calendar/DateTime';
+import { CookerAppointment } from './calendar/CookerAppointment';
+import { EventCategory } from './calendar/Event';
+import { Order } from './Human/order/Order';
 
 
 
@@ -40,14 +43,31 @@ na.setSalary(200);
 let keo =  new Receiption(StaffCategories.RECEIPTION,'Koe', 23, Gender.FEMALE);
 keo.setSalary(250);
 
+//_____________Add Customer_________________________
+let customer1 = new Customer("theavy", 21, Gender.FEMALE);
+let customer2 = new Customer("mey", 20, Gender.FEMALE)
+let customer3 = new Customer("Keov", 20, Gender.FEMALE);
+let customer4 = new Customer("tim", 30, Gender.MALE)
+let customer5 = new Customer("Kimky", 19, Gender.MALE);
+let customer6 = new Customer("Mao", 19, Gender.FEMALE);
+chanry.hr.addCustomers(customer1)
+chanry.hr.addCustomers(customer2)
+chanry.hr.addCustomers(customer3)
+chanry.hr.addCustomers(customer4)
+chanry.hr.addCustomers(customer5)
+
+
 //_____________Table__________________________________
-let firstTable = new TableSeat(1, TableType.FAMILY, 1, TableStatus.FREE, 5);
-let secondTable = new TableSeat(2, TableType.FAMILY, 2, TableStatus.FREE, 4);
-let thirdTable = new TableSeat(3, TableType.FAMILY,3, TableStatus.FREE, 8);
-let fourthTable = new TableSeat(4, TableType.FAMILY, 4, TableStatus.FREE, 3);
-let fifthTable = new TableSeat(5, TableType.FAMILY, 5, TableStatus.FREE, 2);
-
-
+let firstTable = new Table(1);
+let secondTable = new Table(2);
+let thirdTable = new Table(3);
+let fourthTable = new Table(4);
+let fifthTable = new Table(5);
+firstTable.setCustomer(customer1)
+secondTable.setCustomer(customer2)
+thirdTable.setCustomer(customer3)
+fourthTable.setCustomer(customer4)
+fifthTable.setCustomer(customer5)
 //_____________Add staff______________________________
 chanry.hr.addStaff(theavy);
 chanry.hr.addStaff(mey);
@@ -74,17 +94,29 @@ let braek = new Backery('Break',12,MealType.BACKERY);
 let appleJuice = new Drink('Apple Juice',10,MealType.DRINK);
 let orangeJuice = new Drink('Orange Juice',10,MealType.DRINK);
 //________________________ add Meal in menu_______________________
-let menu = new Menu();
-menu.addFood(rice);
-menu.addFood(berger);
-menu.addDrink(appleJuice);
-menu.addDrink(orangeJuice);
-menu.addBackery(chessCake);
-menu.addBackery(braek);
-
+let order1 = new Order(1, firstTable)
+let menu1 = new Menu(MealType.BACKERY, 2000);
+let menu2 = new Menu(MealType.DRINK, 1000);
+let menu3 = new Menu(MealType.FOOD, 5000);
+menu1.addMeal(rice);
+menu2.addMeal(berger);
+menu3.addMeal(appleJuice);
+chanry.kitchen.addChefToKitchen(tim);
+chanry.kitchen.addOrders(order1);
 chanry.rooms.addRooms(rooms);
+
+//____________________________Calenda__________________________
+let dateCooking1 = new DateTime(29, 6, 2022, 7)
+let dateCooking2 = new DateTime(30, 6, 2022, 6)
+
+let cookingappointment = new CookerAppointment(EventCategory.COOKER_APPOINTEMENT, dateCooking1, dateCooking2)
+chanry.Calendars.addEvent(cookingappointment);
+console.log("Time to cooking : ", chanry.Calendars);
+
 //_____________Main___________________________________
 // console.log(chanry.hr);
-chanry.menu.setManu(menu)
-console.log(chanry.rooms.getRooms());
-console.log(chanry.menu.getManu());
+// console.log(chanry.rooms.getRooms());
+console.log(chanry.menu.getMenu());
+// console.log(chanry.orders.listOfPaymentFromEachTable());
+// console.log(chanry.orders.getPaymentFromATable(1));
+

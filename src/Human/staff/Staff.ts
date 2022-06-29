@@ -7,8 +7,6 @@ export enum StaffCategories {
     RECEIPTION = 'Receiption',
    
 }
-
-
 export class Staff extends Person {
     protected salary: number=0;
     constructor(protected category:StaffCategories,name:string, age:number, gender:Gender){
